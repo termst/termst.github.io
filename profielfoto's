@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profielfoto's Archief</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    .search-bar {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .photo {
+      width: 18%;
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .photo img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    .photo p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Profielfoto's Archief</h1>
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Zoek op naam of categorie..." oninput="filterPhotos()">
+  </div>
+  <div id="gallery" class="gallery">
+    <!-- Voeg hier je profielfoto's toe -->
+    <div class="photo" data-name="Strand" data-category="Vakantie">
+      <img src="strand.jpg" alt="Strand">
+      <p>Strand</p>
+      <p>Vakantie</p>
+    </div>
+    <div class="photo" data-name="Huisdier" data-category="Dieren">
+      <img src="huisdier.jpg" alt="Huisdier">
+      <p>Huisdier</p>
+      <p>Dieren</p>
+    </div>
+    <div class="photo" data-name="Winter" data-category="Seizoenen">
+      <img src="winter.jpg" alt="Winter">
+      <p>Winter</p>
+      <p>Seizoenen</p>
+    </div>
+    <div class="photo" data-name="Concert" data-category="Evenementen">
+      <img src="concert.jpg" alt="Concert">
+      <p>Concert</p>
+      <p>Evenementen</p>
+    </div>
+    <div class="photo" data-name="Familie" data-category="Persoonlijk">
+      <img src="familie.jpg" alt="Familie">
+      <p>Familie</p>
+      <p>Persoonlijk</p>
+    </div>
+  </div>
+  <script>
+    function filterPhotos() {
+      const searchValue = document.getElementById("search").value.toLowerCase();
+      const photos = document.querySelectorAll(".photo");
+      photos.forEach(photo => {
+        const name = photo.getAttribute("data-name").toLowerCase();
+        const category = photo.getAttribute("data-category").toLowerCase();
+        if (name.includes(searchValue) || category.includes(searchValue)) {
+          photo.style.display = "block";
+        } else {
+          photo.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
