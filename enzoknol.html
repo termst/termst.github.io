@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Check mijn IP</title>
+</head>
+<body>
+  <p>ip: <span id="ip"></span></p>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // haal ip op
+      fetch('https://api.ipify.org?format=json')
+        .then(res => res.json())
+        .then(data => {
+          var ip = data.ip;
+          document.getElementById('ip').textContent = ip;
+
+          // om te mailen moet je iets van server hebben.
+          // voorbeeld met mailto (user moet zelf klikken):
+          // window.location.href = "mailto:jouwmail@example.com?subject=IP Check&body=Mijn%20IP%20is:%20" + ip;
+          
+          // Wil je 't automatisch mailen zonder user-actie? Dan moet je ff server-side script regelen,
+          // of een externe service die via een POST request kan mailen. In pure HTML/JS lukt dat niet zomaar.
+        })
+        .catch(e => console.error("Tering, IP ophalen mislukt:", e));
+    });
+  </script>
+</body>
+</html>
