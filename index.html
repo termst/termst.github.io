@@ -3,18 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Verification</title>
+    <title>My Articles</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <button id="openPromptButton">Enter Code</button>
-        <div id="codePrompt" class="hidden">
-            <label for="codeInput">Enter Code:</label>
-            <input type="text" id="codeInput">
-            <button id="submitCodeButton">Submit</button>
-        </div>
-    </div>
+    <header>
+        <h1>My Articles</h1>
+    </header>
+    <main>
+        <section id="create">
+            <h2>Create a New Article</h2>
+            <form id="articleForm">
+                <input type="text" id="articleTitle" placeholder="Title" required>
+                <textarea id="articleContent" placeholder="Content" required></textarea>
+                <button type="submit">Add Article</button>
+            </form>
+        </section>
+
+        <section id="articles">
+            <h2>Available Articles</h2>
+            <ul id="articleList"></ul>
+        </section>
+
+        <article id="viewer" class="hidden">
+            <h2 id="viewTitle"></h2>
+            <p id="viewContent"></p>
+            <button id="closeViewer">Close</button>
+        </article>
+    </main>
     <script src="scripts.js"></script>
 </body>
 </html>
